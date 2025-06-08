@@ -186,7 +186,10 @@ if st.button("Transform"):
         st.error("Please enter your Gemini API key in the sidebar.")
     else:
         with st.spinner("Transforming..."):
-            transformed_output = ResponseSchema(type="code", code="Processing your request...")
+            transformed_output = transform_html(
+                output_format=output_format.lower(),
+                template=html_to_transform
+            )
             if transformed_output:
                 if transformed_output.type == "code":
                     st.success("Transformation successful!")
